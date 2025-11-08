@@ -57,8 +57,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_universal(
     _______  , _______  , _______  , _______  , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
-    _______  , _______  , _______  , _______  , _______  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,
-    _______  , _______  , _______  , KC_LCTL  , _______  ,                            SCR_LEFT , SCR_DOWN , SCR_UP   , SCR_RGHT ,  _______  ,
+    _______  , _______  , KC_LGUI  , KC_TAB   , KC_LALT  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,
+    _______  , _______  , _______  , _______  , KC_LCTL  ,                            SCR_LEFT , SCR_DOWN , SCR_UP   , SCR_RGHT ,  _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      _______  , KC_LSFT  , _______  , _______  , _______  , _______
   ),
 
@@ -105,8 +105,8 @@ const uint16_t PROGMEM btn5[] = {KC_COMM, KC_DOT, COMBO_END};
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
-  [BTN4] = COMBO(btn4, KC_BTN1),
-  [BTN5] = COMBO(btn5, KC_BTN2),
+  [BTN4] = COMBO(btn4, KC_BTN4),
+  [BTN5] = COMBO(btn5, KC_BTN5),
 };
 #endif
 
