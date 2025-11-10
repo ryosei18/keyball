@@ -2,7 +2,7 @@ RGBLIGHT_ENABLE = yes
 
 OLED_ENABLE = yes
 
-VIA_ENABLE = yes
+# VIA_ENABLE = yes
 
 COMBO_ENABLE = yes
 
@@ -15,4 +15,4 @@ EXTRAKEY_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 
 # edit tapping term
-DYNAMIC_TAPPING_TERM_ENABLE = yes
+# DYNAMIC_TAPPING_TERM_ENABLE = yes

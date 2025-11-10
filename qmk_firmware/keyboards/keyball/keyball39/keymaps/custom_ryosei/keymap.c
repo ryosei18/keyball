@@ -124,8 +124,8 @@ combo_t key_combos[] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SPC_LT1:
-            return g_tapping_term - 50;
+            return TAPPING_TERM - 50;
         default:
-            return g_tapping_term;
+            return TAPPING_TERM;
     }
 }
