@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_universal(
     _______  , KC_7     , KC_8     , KC_9     , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
     KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            _______  , _______  , SCRN_SHT , WIN_SEC  , _______  ,
-    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_LCTL  , _______  , _______  , _______  , _______  ,
+    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_LCTL  , _______  , QK_UNDERGLOW_VALUE_DOWN  , QK_UNDERGLOW_VALUE_UP  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
 };
@@ -135,19 +135,19 @@ enum {
 
 // Light LEDs 0 & 4 in white when keyboard layer 0 is active
 const rgblight_segment_t PROGMEM layer0_layer[] = RGBLIGHT_LAYER_SEGMENTS (
-  { 0 , 4 , HSV_WHITE}
+    {0, 46 , HSV_WHITE}
 );
 // Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
 const rgblight_segment_t PROGMEM layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {9, 2, HSV_CYAN}
+    {0, 46, HSV_CYAN}
 );
 // Light LEDs 11 & 12 in purple when keyboard layer 2 is active
 const rgblight_segment_t PROGMEM layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {11, 2, HSV_PURPLE}
+    {0, 46, HSV_PURPLE}
 );
 // Light LEDs 13 & 14 in green when keyboard layer 3 is active
 const rgblight_segment_t PROGMEM layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {13, 2, HSV_GREEN}
+    {0, 46, HSV_GREEN}
 );
 
 // Now define the array of layers. Later layers take precedence
