@@ -163,14 +163,14 @@ void keyboard_post_init_user(void) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+    // Auto enable scroll mode when the highest layer is 3
+    keyball_set_scroll_mode(get_highest_layer(state) == 3);
 
     // control LED by layer
-    rgblight_set_layer_state ( 0 , layer_state_cmp (state, _layer0));
-    rgblight_set_layer_state ( 1 , layer_state_cmp (state, _layer1));
-    rgblight_set_layer_state ( 2 , layer_state_cmp (state, _layer2));
-    rgblight_set_layer_state ( 3 , layer_state_cmp (state, _layer3));
+    rgblight_set_layer_state ( 0 , layer_state_cmp (state, _layer0));
+    rgblight_set_layer_state ( 1 , layer_state_cmp (state, _layer1));
+    rgblight_set_layer_state ( 2 , layer_state_cmp (state, _layer2));
+    rgblight_set_layer_state ( 3 , layer_state_cmp (state, _layer3));
 
-    return state;
+    return state;
 }
