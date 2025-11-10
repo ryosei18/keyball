@@ -80,12 +80,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
-    return state;
-}
-
 #ifdef OLED_ENABLE
 
 #    include "lib/oledkit/oledkit.h"
@@ -133,10 +127,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 // キーボードレイヤーの定義
 enum {
-  _layer0 = 0, // キーボードレイヤー 0
-  _layer1,     // キーボードレイヤー 1
-  _layer2,         // キーボードレイヤー 2
-  _layer3      // キーボードレイヤー 3
+  _layer0 = 0,
+  _layer1,
+  _layer2,
+  _layer3
 };
 
 // Light LEDs 0 & 4 in white when keyboard layer 0 is active
@@ -168,10 +162,15 @@ void keyboard_post_init_user(void) {
     rgblight_layers = my_rgb_layers;
 }
 
-layer_state_t layer_state_set_user( layer_state_t state ) {
-  rgblight_set_layer_state ( 0 , layer_state_cmp (state, _layer0));
-  rgblight_set_layer_state ( 1 , layer_state_cmp (state, _layer1));
-  rgblight_set_layer_state ( 2 , layer_state_cmp (state, _layer2));
-  rgblight_set_layer_state ( 3 , layer_state_cmp (state, _layer3));
-  return state;
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Auto enable scroll mode when the highest layer is 3
+    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+
+    // control LED by layer
+    rgblight_set_layer_state ( 0 , layer_state_cmp (state, _layer0));
+    rgblight_set_layer_state ( 1 , layer_state_cmp (state, _layer1));
+    rgblight_set_layer_state ( 2 , layer_state_cmp (state, _layer2));
+    rgblight_set_layer_state ( 3 , layer_state_cmp (state, _layer3));
+
+    return state;
 }
