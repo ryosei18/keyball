@@ -1,10 +1,12 @@
-# RGBLIGHT_ENABLE = yes
+RGBLIGHT_ENABLE = yes
 
 OLED_ENABLE = yes
 
 VIA_ENABLE = yes
 
 COMBO_ENABLE = yes
+
+TAP_DANCE_ENABLE = yes
 
 # media buttons
 EXTRAKEY_ENABLE = yes

@@ -32,6 +32,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WIN_SEC LCTL(LALT(KC_DEL))
 #define CH_LANG LSFT(KC_SPC)
 
+#define Q_ESC TD(TD_Q_ESC)
+
 #define SCR_LEFT KC_MS_WH_LEFT
 #define SCR_DOWN KC_MS_WH_DOWN
 #define SCR_UP KC_MS_WH_UP
@@ -42,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
   [0] = LAYOUT_universal(
-    KC_Q     , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
+    Q_ESC    , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
     KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , L_LT3    , KC_SCLN  ,
     KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  ,
     KC_LCTL  , KC_LGUI  , KC_LALT  , TAB_SHT  ,SPC_LT1   ,BSPC_LT2  ,      ESC_LT3  , ENT_CTL  , _______  , _______  , _______  , KC_DEL
@@ -89,7 +91,7 @@ void oledkit_render_info_user(void) {
 #endif
 
 
-// custom settings
+// combo declarations
 #ifdef COMBO_ENABLE
 enum combos{
   BTN1,
@@ -110,3 +112,22 @@ combo_t key_combos[] = {
 };
 #endif
 
+// Tap Dance declarations
+enum {
+    TD_Q_ESC,
+};
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
+};
+
+
+
+// per key tapping term
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SPC_LT1:
+            return g_tapping_term - 50;
+        default:
+            return g_tapping_term;
+    }
+}
