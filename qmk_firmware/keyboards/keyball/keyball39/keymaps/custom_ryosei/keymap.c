@@ -32,6 +32,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WIN_SEC LCTL(LALT(KC_DEL))
 #define CH_LANG LSFT(KC_SPC)
 
+// Tap Dance declarations
+enum {
+    TD_Q_ESC,
+};
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
+};
 #define Q_ESC TD(TD_Q_ESC)
 
 #define SCR_LEFT KC_MS_WH_LEFT
@@ -111,15 +118,6 @@ combo_t key_combos[] = {
   [BTN5] = COMBO(btn5, KC_BTN5),
 };
 #endif
-
-// Tap Dance declarations
-enum {
-    TD_Q_ESC,
-};
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
-};
-
 
 
 // per key tapping term
