@@ -131,11 +131,17 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 
+// キーボードレイヤーの定義
+enum {
+  _layer0 = 0, // キーボードレイヤー 0
+  _layer1,     // キーボードレイヤー 1
+  _layer2,         // キーボードレイヤー 2
+  _layer3      // キーボードレイヤー 3
+};
 
-// Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
-const rgblight_segment_t PROGMEM layer0_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {6, 4, HSV_RED},       // Light 4 LEDs, starting with LED 6
-    {12, 4, HSV_RED}       // Light 4 LEDs, starting with LED 12
+// Light LEDs 0 & 4 in white when keyboard layer 0 is active
+const rgblight_segment_t PROGMEM layer0_layer[] = RGBLIGHT_LAYER_SEGMENTS (
+  { 0 , 4 , HSV_WHITE}
 );
 // Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
 const rgblight_segment_t PROGMEM layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -153,12 +159,19 @@ const rgblight_segment_t PROGMEM layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     layer0_layer,
-    layer1_layer,    // Overrides caps lock layer
-    layer2_layer,    // Overrides other layers
-    layer3_layer     // Overrides other layers
+    layer1_layer,
+    layer2_layer,
+    layer3_layer
 );
 
 void keyboard_post_init_user(void) {
-    // Enable the LED layers
     rgblight_layers = my_rgb_layers;
+}
+
+layer_state_t layer_state_set_user( layer_state_t state ) {
+  rgblight_set_layer_state ( 0 , layer_state_cmp (state, _layer0));
+  rgblight_set_layer_state ( 1 , layer_state_cmp (state, _layer1));
+  rgblight_set_layer_state ( 2 , layer_state_cmp (state, _layer2));
+  rgblight_set_layer_state ( 3 , layer_state_cmp (state, _layer3));
+  return state;
 }
