@@ -34,8 +34,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define RGBLIGHT_LAYERS
-#define RGBLIGHT_LED_COUNT 46
-#define RGBLIGHT_LIMIT_VAL 100
 #define RGBLIGHT_DEFAULT_VAL 60
 #define RGBLIGHT_SLEEP
 
