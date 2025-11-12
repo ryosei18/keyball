@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 #ifdef RGBLIGHT_ENABLE
-#    define RGBLIGHT_EFFECT_BREATHING
+// #    define RGBLIGHT_EFFECT_BREATHING
 // #    define RGBLIGHT_EFFECT_RAINBOW_MOOD
 // #    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 // #    define RGBLIGHT_EFFECT_SNAKE
@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_SLEEP
 #undef RGBLIGHT_LIMIT_VAL
-#define RGBLIGHT_LIMIT_VAL 60
+#define RGBLIGHT_LIMIT_VAL 40
 
 #define TAP_CODE_DELAY 5
 

@@ -167,12 +167,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     keyball_set_scroll_mode(get_highest_layer(state) == 3);
 
     // control LED by layer
+    HSV hsv = rgblight_get_hsv();  // get current HSV
     switch (get_highest_layer(state)) {
-      case 0: rgblight_sethsv_noeeprom(HSV_YELLOW); break;
-      case 1: rgblight_sethsv_noeeprom(HSV_RED); break;
-      case 2: rgblight_sethsv_noeeprom(HSV_GREEN); break;
-      case 3: rgblight_sethsv_noeeprom(HSV_BLUE); break;
+      case 0: hsv.h = HSV_YELLOW.h; break;
+      case 1: hsv.h = HSV_RED.h;    break;
+      case 2: hsv.h = HSV_GREEN.h;  break;
+      case 3: hsv.h = HSV_BLUE.h;   break;
     }
+    rgblight_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);  // adjust brightness
 
     return state;
 }
