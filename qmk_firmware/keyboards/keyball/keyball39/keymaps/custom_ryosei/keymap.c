@@ -168,10 +168,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     // control LED by layer
     switch (get_highest_layer(state)) {
-      case 0: rgblight_sethsv_noeeprom(HSV_GOLDENROD); break;       // GOLDENROD
-      case 1: rgblight_sethsv_noeeprom(HSV_CYAN); break;   // Cyan
-      case 2: rgblight_sethsv_noeeprom(HSV_PURPLE); break;   // Purple
-      case 3: rgblight_sethsv_noeeprom(HSV_GREEN); break;    // Green
+      case 0: rgblight_sethsv_noeeprom(HSV_YELLOW); break;
+      case 1: rgblight_sethsv_noeeprom(HSV_RED); break;
+      case 2: rgblight_sethsv_noeeprom(HSV_GREEN); break;
+      case 3: rgblight_sethsv_noeeprom(HSV_BLUE); break;
     }
 
     return state;

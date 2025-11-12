@@ -34,8 +34,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 #define RGBLIGHT_LAYERS
-#define RGBLIGHT_DEFAULT_VAL 60
 #define RGBLIGHT_SLEEP
+#undef RGBLIGHT_LIMIT_VAL
+#define RGBLIGHT_LIMIT_VAL 60
+#define RGBLIGHT_VAL_STEP 4
 
 #define TAP_CODE_DELAY 5
 
