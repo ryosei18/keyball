@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_EFFECT_BREATHING
 // #    define RGBLIGHT_EFFECT_RAINBOW_MOOD
 // #    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#    define RGBLIGHT_EFFECT_SNAKE
+// #    define RGBLIGHT_EFFECT_SNAKE
 // #    define RGBLIGHT_EFFECT_KNIGHT
 // #    define RGBLIGHT_EFFECT_CHRISTMAS
 // #    define RGBLIGHT_EFFECT_STATIC_GRADIENT
@@ -35,6 +35,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LED_COUNT 46
+#define RGBLIGHT_LIMIT_VAL 100
+#define RGBLIGHT_DEFAULT_VAL 60
+#define RGBLIGHT_SLEEP
 
 #define TAP_CODE_DELAY 5
 
