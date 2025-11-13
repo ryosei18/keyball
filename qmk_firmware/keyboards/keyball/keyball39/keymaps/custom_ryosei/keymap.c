@@ -161,7 +161,7 @@ combo_t key_combos[] = {
   [BTN2] = COMBO(btn2, KC_BTN2),
   [BTN4] = COMBO(btn4, KC_BTN4),
   [BTN5] = COMBO(btn5, KC_BTN5),
-  [BTN5] = COMBO(TAB, KC_TAB),
+  [TAB] = COMBO(TAB, KC_TAB),
 };
 #endif
 
