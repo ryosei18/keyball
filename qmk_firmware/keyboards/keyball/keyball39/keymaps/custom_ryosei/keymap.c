@@ -21,12 +21,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "quantum.h"
 
 
-#define TAB_SHT SFT_T(KC_TAB)
+#define ESC_SHT SFT_T(KC_ESC)
+#define CLN_SHT SFT_T(KC_SCLN)
 #define ENT_CTL MT(MOD_LCTL, KC_ENT)
 #define BSPC_LT2 LT(2, KC_BSPC)
 #define SPC_LT1 LT(1, KC_SPC)
 #define L_LT3 LT(3, KC_L)
-#define ESC_LT3 LT(3, KC_ESC)
+#define TAB_LT3 LT(3, KC_TAB)
 
 #define SCRN_SHT LSFT(LGUI(KC_S))
 #define WIN_SEC LCTL(LALT(KC_DEL))
@@ -41,6 +42,54 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 #define Q_ESC TD(TD_Q_ESC)
 
+// macros declarations
+enum custom_keycodes {
+    COMM_ECXL = SAFE_RANGE,
+    DOT_QUES = SAFE_RANGE,
+    SLSH_BSLS = SAFE_RANGE,
+};
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case COMM_MOD:
+            if (record->event.pressed) {
+                uint8_t current_mods = get_mods(); // get shift key situation
+                if (current_mods & MOD_MASK_SHIFT) { // check Shift
+                    tap_code16(S(KC_1));
+                    return false;
+                } else {
+                    tap_code(KC_COMM);
+                    return false;
+                }
+            }
+            break;
+        case DOT_QUES:
+            if (record->event.pressed) {
+                uint8_t current_mods = get_mods(); // get shift key situation
+                if (current_mods & MOD_MASK_SHIFT) { // check Shift
+                    tap_code16(S(KC_SLSH));
+                    return false;
+                } else {
+                    tap_code(KC_DOT);
+                    return false;
+                }
+            }
+            break;
+        case SLSH_BSLS:
+            if (record->event.pressed) {
+                uint8_t current_mods = get_mods(); // get shift key situation
+                if (current_mods & MOD_MASK_SHIFT) { // check Shift
+                    tap_code16(S(KC_BSLS));
+                    return false;
+                } else {
+                    tap_code(KC_SLSH);
+                    return false;
+                }
+            }
+            break;
+    }
+    return true;
+}
+
 #define SCR_LEFT KC_MS_WH_LEFT
 #define SCR_DOWN KC_MS_WH_DOWN
 #define SCR_UP KC_MS_WH_UP
@@ -52,20 +101,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
   [0] = LAYOUT_universal(
     Q_ESC    , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
-    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , L_LT3    , KC_SCLN  ,
-    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , KC_COMM  , KC_DOT   , KC_SLSH  ,
-    KC_LCTL  , KC_LGUI  , KC_LALT  , TAB_SHT  ,SPC_LT1   ,BSPC_LT2  ,      ESC_LT3  , ENT_CTL  , _______  , _______  , _______  , KC_DEL
+    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , L_LT3    , CLN_SHT  ,
+    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , COMM_ECXL, DOT_QUES , SLSH_BSLS,
+    KC_LCTL  , KC_LGUI  , KC_LALT  , ESC_SHT  ,SPC_LT1   ,BSPC_LT2  ,      TAB_LT3  , ENT_CTL  , _______  , _______  , _______  , KC_DEL
   ),
 
   [1] = LAYOUT_universal(
-    KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   ,                            KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,
-    _______  , S(KC_6)  ,S(KC_BSLS), S(KC_7)  , S(KC_8)  ,                            KC_MINS  , KC_EQL   , KC_QUOT  , S(KC_GRV), LCTL(KC_BSPC)  ,
-    _______  , S(KC_1)  , S(KC_2)  , S(KC_3)  , S(KC_5)  ,                            S(KC_9)  , S(KC_0)  , KC_LBRC  , KC_RBRC  , _______  ,
+    KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                            KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   ,
+    S(KC_6)  , S(KC_3)  ,S(KC_BSLS), S(KC_7)  , S(KC_8)  ,                            KC_MINS  , KC_EQL   , KC_QUOT  , S(KC_GRV), S(KC_5)  ,
+    S(KC_2)  ,S(KC_COMM),S(KC_LBRC), KC_LBRC  , S(KC_9)  ,                            S(KC_0)  , KC_RBRC  ,S(KC_RBRC), S(KC_DOT), S(KC_4)  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      CH_LANG  , KC_LSFT  , _______  , _______  , _______  , _______
   ),
 
   [2] = LAYOUT_universal(
-    _______  , _______  , _______  , _______  , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
+    _______  , _______  , _______  , _______  , _______  ,                            _______  , KC_PGDN  , KC_PGUP  , _______  , _______  ,
     _______  , _______  , KC_LGUI  , KC_LALT  , KC_TAB   ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,
     _______  , _______  , _______  , _______  , KC_LCTL  ,                            SCR_LEFT , SCR_DOWN , SCR_UP   , SCR_RGHT ,  _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      KC_APP   , KC_LSFT  , _______  , _______  , _______  , _______
