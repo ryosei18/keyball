@@ -148,20 +148,20 @@ enum combos{
   BTN2,
   BTN4,
   BTN5,
-  TAB,
+  TAB_COMBO,
 };
 const uint16_t PROGMEM btn1[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_K, LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn4[] = {KC_M, COMM_ECXL, COMBO_END};
 const uint16_t PROGMEM btn5[] = {COMM_ECXL, DOT_QUES, COMBO_END};
-const uint16_t PROGMEM tab[] = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = {KC_A, KC_S, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
   [BTN2] = COMBO(btn2, KC_BTN2),
   [BTN4] = COMBO(btn4, KC_BTN4),
   [BTN5] = COMBO(btn5, KC_BTN5),
-  [TAB] = COMBO(TAB, KC_TAB),
+  [TAB_COMBO] = COMBO(tab_combo, KC_TAB),
 };
 #endif
 
