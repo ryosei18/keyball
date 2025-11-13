@@ -78,7 +78,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 uint8_t current_mods = get_mods(); // get shift key situation
                 if (current_mods & MOD_MASK_SHIFT) { // check Shift
-                    tap_code16(S(KC_BSLS));
+                    tap_code16(KC_BSLS);
                     return false;
                 } else {
                     tap_code(KC_SLSH);
