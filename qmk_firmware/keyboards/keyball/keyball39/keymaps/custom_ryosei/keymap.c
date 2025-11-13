@@ -45,12 +45,12 @@ tap_dance_action_t tap_dance_actions[] = {
 // macros declarations
 enum custom_keycodes {
     COMM_ECXL = SAFE_RANGE,
-    DOT_QUES = SAFE_RANGE,
-    SLSH_BSLS = SAFE_RANGE,
+    DOT_QUES,
+    SLSH_BSLS,
 };
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case COMM_MOD:
+        case COMM_ECXL:
             if (record->event.pressed) {
                 uint8_t current_mods = get_mods(); // get shift key situation
                 if (current_mods & MOD_MASK_SHIFT) { // check Shift
