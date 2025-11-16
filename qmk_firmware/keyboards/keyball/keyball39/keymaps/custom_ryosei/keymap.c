@@ -21,13 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "quantum.h"
 
 
-#define ESC_SHT SFT_T(KC_ESC)
-#define CLN_SHT SFT_T(KC_SCLN)
-#define ENT_CTL MT(MOD_LCTL, KC_ENT)
-#define BSPC_LT2 LT(2, KC_BSPC)
+#define ENT_SHT SFT_T(KC_ENT)
 #define SPC_LT1 LT(1, KC_SPC)
 #define L_LT3 LT(3, KC_L)
-#define TAB_LT3 LT(3, KC_TAB)
 
 #define SCRN_SHT LSFT(LGUI(KC_S))
 #define WIN_SEC LCTL(LALT(KC_DEL))
@@ -101,29 +97,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
   [0] = LAYOUT_universal(
     Q_ESC    , KC_W     , KC_E     , KC_R     , KC_T     ,                            KC_Y     , KC_U     , KC_I     , KC_O     , KC_P     ,
-    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , L_LT3    , CLN_SHT  ,
-    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , COMM_ECXL, DOT_QUES , SLSH_BSLS,
-    KC_LCTL  , KC_LGUI  , KC_LALT  , ESC_SHT  ,SPC_LT1   ,BSPC_LT2  ,      TAB_LT3  , ENT_CTL  , _______  , _______  , _______  , KC_DEL
+    KC_A     , KC_S     , KC_D     , KC_F     , KC_G     ,                            KC_H     , KC_J     , KC_K     , L_LT3    , ENT_SHT  ,
+    KC_Z     , KC_X     , KC_C     , KC_V     , KC_B     ,                            KC_N     , KC_M     , COMM_ECXL, DOT_QUES , KC_BSPC  ,
+    _______  , _______  , _______  , _______  , SPC_LT1  , KC_LSFT  ,      KC_LCTL  , MO(2)  , _______  , _______  , _______  , KC_DEL
   ),
 
   [1] = LAYOUT_universal(
-    KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                            KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   ,
-    S(KC_6)  , S(KC_3)  ,S(KC_BSLS), S(KC_7)  , S(KC_8)  ,                            KC_MINS  , KC_EQL   , KC_QUOT  , S(KC_GRV), S(KC_5)  ,
-    S(KC_2)  ,S(KC_COMM),S(KC_LBRC), KC_LBRC  , S(KC_9)  ,                            S(KC_0)  , KC_RBRC  ,S(KC_RBRC), S(KC_DOT), S(KC_4)  ,
+    KC_F1    , KC_F2    , KC_F3    , KC_F4    , KC_F5    ,                            KC_SCLN  , KC_COLN  , SLSH_BSLS, S(KC_GRV), _______  ,
+    KC_CIRC  , KC_HASH  , KC_PIPE  , KC_AMPR  , KC_ASTR  ,                            KC_MINS  , KC_EQL   , KC_PLUS  , KC_QUOT  , KC_DLR   ,
+    KC_AT    , KC_LABK  , KC_LCBR  , KC_LBRC  , KC_LPRN  ,                            KC_RPRN  , KC_RBRC  , KC_RCBR  , KC_RABK  , KC_PERC  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      CH_LANG  , KC_LSFT  , _______  , _______  , _______  , _______
   ),
 
   [2] = LAYOUT_universal(
-    _______  , _______  , _______  , _______  , _______  ,                            _______  , KC_PGDN  , KC_PGUP  , _______  , _______  ,
-    _______  , _______  , KC_LGUI  , KC_LALT  , KC_TAB   ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,
-    _______  , _______  , _______  , _______  , KC_LCTL  ,                            SCR_LEFT , SCR_DOWN , SCR_UP   , SCR_RGHT ,  _______  ,
-    _______  , _______  , _______  , _______  , _______  , _______  ,      KC_APP   , KC_LSFT  , _______  , _______  , _______  , _______
+    KC_F6    , KC_F7    , KC_F8    , KC_F9    , KC_F10   ,                            _______  , KC_PGDN  , KC_PGUP  , _______  , _______  ,
+    _______  , KC_LGUI  , KC_LALT  , KC_TAB   , _______  ,                            KC_LEFT  , KC_DOWN  , KC_UP    , KC_RGHT  , _______  ,
+    _______  , _______  , _______  , KC_LCTL  , _______  ,                            SCR_LEFT , SCR_DOWN , SCR_UP   , SCR_RGHT , _______  ,
+    _______  , _______  , _______  , _______  , KC_LSFT  , KC_APP   ,      _______  , _______  , _______  , _______  , _______  , _______
   ),
 
   [3] = LAYOUT_universal(
     _______  , KC_7     , KC_8     , KC_9     , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
-    KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            _______  , _______  , SCRN_SHT , WIN_SEC  , _______  ,
-    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_LCTL  , _______  , RGB_VAD  , RGB_VAI  , _______  ,
+    KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            KC_LALT  , SCRN_SHT , WIN_SEC  , _______  , _______  ,
+    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_LCTL  , RGB_VAD  , RGB_VAI  , _______    _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      _______  , _______  , _______  , _______  , _______  , RGB_TOG
   ),
 };
@@ -154,7 +150,7 @@ const uint16_t PROGMEM btn1[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM btn2[] = {KC_K, LT(3, KC_L), COMBO_END};
 const uint16_t PROGMEM btn4[] = {KC_M, COMM_ECXL, COMBO_END};
 const uint16_t PROGMEM btn5[] = {COMM_ECXL, DOT_QUES, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = {KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
   [BTN1] = COMBO(btn1, KC_BTN1),
