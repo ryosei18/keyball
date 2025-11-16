@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_universal(
     _______  , KC_7     , KC_8     , KC_9     , _______  ,                            _______  , _______  , _______  , _______  , _______  ,
     KC_0     , KC_4     , KC_5     , KC_6     , _______  ,                            KC_LALT  , SCRN_SHT , WIN_SEC  , _______  , _______  ,
-    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_LCTL  , RGB_VAD  , RGB_VAI  , _______    _______  ,
+    _______  , KC_1     , KC_2     , KC_3     , _______  ,                            KC_LCTL  , RGB_VAD  , RGB_VAI  , _______  , _______  ,
     _______  , _______  , _______  , _______  , _______  , _______  ,      _______  , _______  , _______  , _______  , _______  , RGB_TOG
   ),
 };
